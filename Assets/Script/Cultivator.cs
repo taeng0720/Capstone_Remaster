@@ -1,3 +1,4 @@
+using System.Xml;
 using UnityEngine;
 
 public class Cultivator : MonoBehaviour
@@ -33,7 +34,11 @@ public class Cultivator : MonoBehaviour
             else Transmission = true;
         }
 
-        if (Gear == 1)
+        if (Input.GetKey(KeyCode.Space))
+        {
+            if (Speed > 0) Speed -= 0.25f;
+        }
+        else if (Gear == 1)
         {
             if (Transmission)
             {
@@ -78,8 +83,8 @@ public class Cultivator : MonoBehaviour
 
     private void RotateControl()
     {
-        if (isPressedLeft && !isPressedRight) RotateDirection = -1;
-        else if (isPressedRight && !isPressedLeft) RotateDirection = 1;
+        if (isPressedLeft && !isPressedRight && Speed >5) RotateDirection = -1;
+        else if (isPressedRight && !isPressedLeft && Speed >5) RotateDirection = 1;
         else RotateDirection = 0;
 
         if (Input.GetKey(KeyCode.Z))
@@ -104,12 +109,14 @@ public class Cultivator : MonoBehaviour
             else RotateSpeed = 0;
         }
 
+        transform.localPosition = new Vector3(RotateSpeed / 15, 0, -Mathf.Abs(RotateSpeed / 100));
+
         Quaternion parentRotation = transform.parent.rotation;
         Quaternion newRotation = parentRotation * Quaternion.Euler(0, RotateSpeed, 0);
         transform.rotation = newRotation;
 
         Vector3 currentRotation = transform.parent.transform.rotation.eulerAngles;
-        currentRotation.y += RotateSpeed/15 * Speed/100;
+        currentRotation.y += RotateSpeed/15 * Speed/60;
         transform.parent.transform.rotation = Quaternion.Euler(currentRotation);
     }
 }
