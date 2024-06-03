@@ -79,7 +79,7 @@ public class Cultivator : MonoBehaviour
     private void RotateControl()
     {
         if (isPressedLeft && !isPressedRight) RotateDirection = -1;
-        else if (!isPressedRight && isPressedLeft) RotateDirection = 1;
+        else if (isPressedRight && !isPressedLeft) RotateDirection = 1;
         else RotateDirection = 0;
 
         if (Input.GetKey(KeyCode.Z))
