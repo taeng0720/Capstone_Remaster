@@ -1,4 +1,3 @@
-using System.Xml;
 using UnityEngine;
 
 public class Cultivator : MonoBehaviour
@@ -8,22 +7,33 @@ public class Cultivator : MonoBehaviour
     private bool Transmission = true;
     private int RotateDirection = 0;
     private float RotateSpeed = 0;
-
     private bool isPressedLeft = false;
     private bool isPressedRight = false;
+
+    [SerializeField] private GameObject Tire;
 
     private void Update()
     {
         GearControl();
         SpeedControl();
         RotateControl();
+        TireRoll();
     }
 
     private void GearControl()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1)) Gear = 1;
-        else if (Input.GetKeyDown(KeyCode.Alpha2)) Gear = 2;
-        else if (Input.GetKeyDown(KeyCode.Alpha3)) Gear = 3;
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            Gear = 1;
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            Gear = 2;
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            Gear = 3;
+        }
     }
 
     private void SpeedControl()
@@ -118,5 +128,12 @@ public class Cultivator : MonoBehaviour
         Vector3 currentRotation = transform.parent.transform.rotation.eulerAngles;
         currentRotation.y += RotateSpeed/15 * Speed/60;
         transform.parent.transform.rotation = Quaternion.Euler(currentRotation);
+    }
+
+    private void TireRoll()
+    {
+        Vector3 currentRotation = Tire.transform.rotation.eulerAngles;
+        currentRotation.z += Speed / 10;
+        Tire.transform.rotation = Quaternion.Euler(currentRotation);
     }
 }

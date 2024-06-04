@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TitleScene : MonoBehaviour
 {
@@ -27,6 +28,8 @@ public class TitleScene : MonoBehaviour
     {
         PlayerPrefs.DeleteAll();
         tutorial = 0;
+
+        SceneManager.LoadScene("tutorial");
     }
 
     public void OnClickSetting()
