@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class TitleScene : MonoBehaviour
 {
@@ -7,6 +8,7 @@ public class TitleScene : MonoBehaviour
     [SerializeField] private GameObject Cover;
     [SerializeField] private GameObject SettingUI;
     [SerializeField] private GameObject ExitUI;
+    [SerializeField] private Image FadeIn;
 
     private void Start()
     {
@@ -26,9 +28,14 @@ public class TitleScene : MonoBehaviour
 
     public void OnClickNewgame()
     {
+        FadeIn.transform.localScale = new Vector3(1.2f, 1.2f, 1.2f);
         PlayerPrefs.DeleteAll();
         tutorial = 0;
-
+        FadeIn.CrossFadeAlpha(255f, 2f, true);
+        Invoke("EndFadeIn", 2.5f);
+    }
+    private void EndFadeIn()
+    {
         SceneManager.LoadScene("tutorial");
     }
 

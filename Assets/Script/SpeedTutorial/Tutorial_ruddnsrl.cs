@@ -1,14 +1,14 @@
 using UnityEngine;
 
-public class Cultivator : MonoBehaviour
+public class Tutorial_ruddnsrl : MonoBehaviour
 {
     public int Gear = 0;
     private float Speed = 0;
-    private bool Transmission = true;
-    private int RotateDirection = 0;
-    private float RotateSpeed = 0;
-    private bool isPressedLeft = false;
-    private bool isPressedRight = false;
+    public bool Transmission = false;
+
+    public bool canPressGear2 = false;
+    public bool canPressGear3 = false;
+    public bool canPressR = false;
 
     [SerializeField] private GameObject Tire;
 
@@ -16,7 +16,6 @@ public class Cultivator : MonoBehaviour
     {
         GearControl();
         SpeedControl();
-        RotateControl();
         TireRoll();
     }
 
@@ -26,11 +25,11 @@ public class Cultivator : MonoBehaviour
         {
             Gear = 1;
         }
-        else if (Input.GetKeyDown(KeyCode.Alpha2))
+        else if (Input.GetKeyDown(KeyCode.Alpha2) && canPressGear2)
         {
             Gear = 2;
         }
-        else if (Input.GetKeyDown(KeyCode.Alpha3))
+        else if (Input.GetKeyDown(KeyCode.Alpha3) && canPressGear3)
         {
             Gear = 3;
         }
@@ -38,7 +37,7 @@ public class Cultivator : MonoBehaviour
 
     private void SpeedControl()
     {
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.R) && canPressR)
         {
             if (Transmission) Transmission = false;
             else Transmission = true;
@@ -89,45 +88,6 @@ public class Cultivator : MonoBehaviour
         }
 
         transform.parent.transform.Translate(Vector3.forward * Speed * Time.deltaTime, Space.Self);
-    }
-
-    private void RotateControl()
-    {
-        if (isPressedLeft && !isPressedRight && Speed >5) RotateDirection = -1;
-        else if (isPressedRight && !isPressedLeft && Speed >5) RotateDirection = 1;
-        else RotateDirection = 0;
-
-        if (Input.GetKey(KeyCode.Z))
-        {
-            if (Input.GetKey(KeyCode.A)) isPressedLeft = true;
-            else isPressedLeft = false;
-        }
-        else isPressedLeft = false;
-        if (Input.GetKey(KeyCode.C))
-        {
-            if (Input.GetKey(KeyCode.D)) isPressedRight = true;
-            else isPressedRight = false;
-        }
-        else isPressedRight = false;
-
-        if (RotateDirection > 0 && RotateDirection * 15 > RotateSpeed) RotateSpeed += 1.25f;
-        else if (RotateDirection < 0 && RotateDirection * 15 < RotateSpeed) RotateSpeed -= 1.25f;
-        else if (RotateDirection == 0)
-        {
-            if (RotateSpeed > 0.2) RotateSpeed -= 1.25f;
-            else if (RotateSpeed < -0.2) RotateSpeed += 1.25f;
-            else RotateSpeed = 0;
-        }
-
-        transform.localPosition = new Vector3(RotateSpeed / 15, 0, -Mathf.Abs(RotateSpeed / 100));
-
-        Quaternion parentRotation = transform.parent.rotation;
-        Quaternion newRotation = parentRotation * Quaternion.Euler(0, RotateSpeed, 0);
-        transform.rotation = newRotation;
-
-        Vector3 currentRotation = transform.parent.transform.rotation.eulerAngles;
-        currentRotation.y += RotateSpeed/15 * Speed/60;
-        transform.parent.transform.rotation = Quaternion.Euler(currentRotation);
     }
 
     private void TireRoll()

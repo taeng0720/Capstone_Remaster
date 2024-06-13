@@ -4,8 +4,6 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance = null;
 
-    public int TutorialProgress;
-
     private void Awake()
     {
         if (instance == null)
@@ -16,11 +14,5 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-    }
-
-    private void Start()
-    {
-        if (PlayerPrefs.HasKey("isClear")) TutorialProgress = PlayerPrefs.GetInt("isClear");
-        else TutorialProgress = 0;
     }
 }
