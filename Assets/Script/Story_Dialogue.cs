@@ -11,6 +11,7 @@ public class RowArray
 
 public class Story_Dialogue : MonoBehaviour
 {
+    [SerializeField] private GameObject ruddnsrl;
     [SerializeField] private TMP_Text StoryText;
     [SerializeField] private float TextSpeed;
     [SerializeField] private RowArray[] Story;
@@ -89,6 +90,12 @@ public class Story_Dialogue : MonoBehaviour
     private void DelayFO()
     {
         FadeOut.CrossFadeAlpha(0f, 2.5f, true);
+        Invoke("StartTutoDialogue", 2.5f);
+    }
+
+    private void StartTutoDialogue()
+    {
+        ruddnsrl.GetComponent<Tutorial_Dialogue>().StartTextTyping();
     }
 
     private void StoryStart()

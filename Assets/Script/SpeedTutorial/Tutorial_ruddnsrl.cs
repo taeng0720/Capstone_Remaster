@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 public class Tutorial_ruddnsrl : MonoBehaviour
@@ -6,11 +7,18 @@ public class Tutorial_ruddnsrl : MonoBehaviour
     private float Speed = 0;
     public bool Transmission = false;
 
+    public bool canPressGear1 = false;
     public bool canPressGear2 = false;
     public bool canPressGear3 = false;
     public bool canPressR = false;
+    public bool canPressSpace = false;
 
     [SerializeField] private GameObject Tire;
+    [SerializeField] private GameObject TutoText;
+
+    [SerializeField] private TMP_Text SpeedText;
+    [SerializeField] private TMP_Text GearText;
+    [SerializeField] private TMP_Text TransmissionText;
 
     private void Update()
     {
@@ -21,9 +29,10 @@ public class Tutorial_ruddnsrl : MonoBehaviour
 
     private void GearControl()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        if (Input.GetKeyDown(KeyCode.Alpha1) && canPressGear1)
         {
             Gear = 1;
+            GearText.text = "Gear : " + Gear;
         }
         else if (Input.GetKeyDown(KeyCode.Alpha2) && canPressGear2)
         {
@@ -37,13 +46,13 @@ public class Tutorial_ruddnsrl : MonoBehaviour
 
     private void SpeedControl()
     {
-        if (Input.GetKeyDown(KeyCode.R) && canPressR)
+        if (Input.GetKeyDown(KeyCode.R) && canPressR && !Transmission)
         {
-            if (Transmission) Transmission = false;
-            else Transmission = true;
+            Transmission = true;
+            TransmissionText.text = "Transmission : fast";
         }
 
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKey(KeyCode.Space) && canPressSpace)
         {
             if (Speed > 0) Speed -= 0.25f;
         }
@@ -88,6 +97,7 @@ public class Tutorial_ruddnsrl : MonoBehaviour
         }
 
         transform.parent.transform.Translate(Vector3.forward * Speed * Time.deltaTime, Space.Self);
+        SpeedText.text = "Speed : " + Speed;
     }
 
     private void TireRoll()
