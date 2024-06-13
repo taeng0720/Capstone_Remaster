@@ -93,7 +93,7 @@ public class Tutorial_ruddnsrl : MonoBehaviour
     private void TireRoll()
     {
         Vector3 currentRotation = Tire.transform.rotation.eulerAngles;
-        currentRotation.z += Speed / 10;
+        currentRotation.z += Speed / 20;
         Tire.transform.rotation = Quaternion.Euler(currentRotation);
     }
 }
