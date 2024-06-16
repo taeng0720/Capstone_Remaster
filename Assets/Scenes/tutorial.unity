@@ -240,29 +240,29 @@ MonoBehaviour:
   TextSpeed: 0.03
   Story:
   - row:
-    - "\u3138"
-    - "\uB69C"
-    - "\uB69C\u3139"
-    - "\uB69C\uB974"
-    - "\uB69C\uB974\u3139"
-    - "\uB69C\uB974\uB974"
-    - "\uB69C\uB974\uB974\u3139"
-    - "\uB69C\uB974\uB974\uB974"
-    - "\uB69C\uB974\uB974\uB974."
-    - "\uB69C\uB974\uB974\uB974.."
-    - "\uB69C\uB974\uB974\uB974..."
+    - (
+    - "(\u3148"
+    - "(\uC800"
+    - "(\uC804\u314E"
+    - "(\uC804\uD638"
+    - "(\uC804\uD654"
+    - "(\uC804\uD654\u3131"
+    - "(\uC804\uD654\uAC00"
+    - "(\uC804\uD654\uAC00 \u3147"
+    - "(\uC804\uD654\uAC00 \uC6B0"
+    - "(\uC804\uD654\uAC00 \uC6B8"
+    - "(\uC804\uD654\uAC00 \uC6B8\u3139"
+    - "(\uC804\uD654\uAC00 \uC6B8\uB9AC"
+    - "(\uC804\uD654\uAC00 \uC6B8\uB9B0"
+    - "(\uC804\uD654\uAC00 \uC6B8\uB9B0\u3137"
+    - "(\uC804\uD654\uAC00 \uC6B8\uB9B0\uB2E4"
+    - "(\uC804\uD654\uAC00 \uC6B8\uB9B0\uB2E4)"
   - row:
-    - "\u3138"
-    - "\uB69C"
-    - "\uB69C\u3139"
-    - "\uB69C\uB974"
-    - "\uB69C\uB974\u3139"
-    - "\uB69C\uB974\uB974"
-    - "\uB69C\uB974\uB974\u3139"
-    - "\uB69C\uB974\uB974\uB974"
-    - "\uB69C\uB974\uB974\uB974."
-    - "\uB69C\uB974\uB974\uB974.."
-    - "\uB69C\uB974\uB974\uB974..."
+    - .
+    - ..
+    - ...
+    - ....
+    - .....
   - row:
     - (
     - "(\u3148"
@@ -1490,6 +1490,7 @@ RectTransform:
   - {fileID: 278748869}
   - {fileID: 111141994}
   - {fileID: 967365665}
+  - {fileID: 1519745212}
   - {fileID: 1894927313}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2753,17 +2754,17 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1519745211}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.00011149734}
-  m_LocalScale: {x: 0.27272728, y: 0.27272728, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.30000004, y: 0.30000004, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 956943460}
   - {fileID: 2025005481}
-  m_Father: {fileID: 1894927313}
+  m_Father: {fileID: 517035089}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -727.2664, y: 500}
+  m_AnchoredPosition: {x: -800, y: 160}
   m_SizeDelta: {x: 1080, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1519745213
@@ -3065,7 +3066,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 845780531}
-  - {fileID: 1519745212}
   m_Father: {fileID: 517035089}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
@@ -7090,9 +7090,8 @@ MonoBehaviour:
       \uC788\uC796\uC544!"
   - row:
     - 
-  - row:
-    - 
   TextBG: {fileID: 1894927312}
+  TutorialBG: {fileID: 1519745211}
   TutoText: {fileID: 845780529}
   TipText: {fileID: 2025005482}
 --- !u!1 &4488555266043834985

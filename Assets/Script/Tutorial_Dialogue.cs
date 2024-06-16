@@ -7,6 +7,7 @@ public class Tutorial_Dialogue : MonoBehaviour
     [SerializeField] private float TextSpeed;
     [SerializeField] private RowArray[] Tutorial;
     [SerializeField] private GameObject TextBG;
+    [SerializeField] private GameObject TutorialBG;
     [SerializeField] private TMP_Text TutoText;
     [SerializeField] private TMP_Text TipText;
     private int StoryProgress = 0;
@@ -28,6 +29,7 @@ public class Tutorial_Dialogue : MonoBehaviour
     public void StartTextTyping()
     {
         Child.canPressGear1 = true;
+        TutorialBG.SetActive(true);
         TextBG.SetActive(true);
         TipText.text = "\"숫자 1\" 버튼을 누르자.";
         StartCoroutine(TutoTextTyping(StoryProgress));
@@ -35,13 +37,14 @@ public class Tutorial_Dialogue : MonoBehaviour
 
     IEnumerator TutoTextTyping(int StoryPrg)
     {
+        TextBG.SetActive(true);
         for (int i = 0; i < Tutorial[StoryPrg].row.Length; i++)
         {
             TutoText.text = Tutorial[StoryPrg].row[i];
             yield return new WaitForSeconds(TextSpeed);
         }
         yield return new WaitForSeconds(3f);
-        TutoText.text = "";
+        TextBG.SetActive(false);
         yield break;
     }
 
