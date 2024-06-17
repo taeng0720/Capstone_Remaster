@@ -24,33 +24,8 @@ public class Tutorial_Dialogue : MonoBehaviour
         {
             TipText.text = "";
         }
-    }
 
-    public void StartTextTyping()
-    {
-        Child.canPressGear1 = true;
-        TutorialBG.SetActive(true);
-        TextBG.SetActive(true);
-        TipText.text = "\"숫자 1\" 버튼을 누르자.";
-        StartCoroutine(TutoTextTyping(StoryProgress));
-    }
-
-    IEnumerator TutoTextTyping(int StoryPrg)
-    {
-        TextBG.SetActive(true);
-        for (int i = 0; i < Tutorial[StoryPrg].row.Length; i++)
-        {
-            TutoText.text = Tutorial[StoryPrg].row[i];
-            yield return new WaitForSeconds(TextSpeed);
-        }
-        yield return new WaitForSeconds(3f);
-        TextBG.SetActive(false);
-        yield break;
-    }
-
-    private void OnTriggerEnter(Collider collision)
-    {
-        if (collision.transform.name == "100")
+        if (transform.position.x >= 100 && transform.position.x < 110)
         {
             if (Child.canPressGear2 == false)
             {
@@ -77,7 +52,7 @@ public class Tutorial_Dialogue : MonoBehaviour
             }
         }
 
-        if (collision.transform.name == "300")
+        if (transform.position.x >= 300 && transform.position.x < 310)
         {
             if (Child.canPressGear3 == false)
             {
@@ -104,7 +79,7 @@ public class Tutorial_Dialogue : MonoBehaviour
             }
         }
 
-        if (collision.transform.name == "600")
+        if (transform.position.x >= 600 && transform.position.x < 610)
         {
             if (Child.canPressR == false)
             {
@@ -129,5 +104,56 @@ public class Tutorial_Dialogue : MonoBehaviour
                 TipText.text = "";
             }
         }
+
+        if (transform.position.x >= 960 && transform.position.x < 970)
+        {
+            if (Child.canPressSpace == false)
+            {
+                Child.canPressSpace = true;
+            }
+
+            if (Input.GetKey(KeyCode.Space))
+            {
+                {
+
+                }
+                if (StoryProgress < 4)
+                {
+                    TipText.text = "\"스페이스바\" 버튼을 누르자.";
+                    StoryProgress = 4;
+                    StartCoroutine(TutoTextTyping(StoryProgress));
+                }
+                Vector3 dir = transform.position;
+                dir.x -= 10;
+                dir.y -= 0.01f;
+                transform.position = dir;
+            }
+            else
+            {
+                TipText.text = "";
+            }
+        }
+    }
+
+    public void StartTextTyping()
+    {
+        Child.canPressGear1 = true;
+        TutorialBG.SetActive(true);
+        TextBG.SetActive(true);
+        TipText.text = "\"숫자 1\" 버튼을 누르자.";
+        StartCoroutine(TutoTextTyping(StoryProgress));
+    }
+
+    IEnumerator TutoTextTyping(int StoryPrg)
+    {
+        TextBG.SetActive(true);
+        for (int i = 0; i < Tutorial[StoryPrg].row.Length; i++)
+        {
+            TutoText.text = Tutorial[StoryPrg].row[i];
+            yield return new WaitForSeconds(TextSpeed);
+        }
+        yield return new WaitForSeconds(3f);
+        TextBG.SetActive(false);
+        yield break;
     }
 }
