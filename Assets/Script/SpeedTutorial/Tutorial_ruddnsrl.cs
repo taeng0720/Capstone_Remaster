@@ -12,6 +12,7 @@ public class Tutorial_ruddnsrl : MonoBehaviour
     public bool canPressGear3 = false;
     public bool canPressR = false;
     public bool canPressSpace = false;
+    public bool isPressedSpace = false;
 
     [SerializeField] private GameObject Tire;
     [SerializeField] private GameObject TutoText;
@@ -46,7 +47,7 @@ public class Tutorial_ruddnsrl : MonoBehaviour
 
     private void SpeedControl()
     {
-        if (Input.GetKeyDown(KeyCode.R) && canPressR && !Transmission)
+        if (Input.GetKey(KeyCode.R) && canPressR && !Transmission)
         {
             Transmission = true;
             TransmissionText.text = "Transmission : fast";
@@ -54,45 +55,50 @@ public class Tutorial_ruddnsrl : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Space) && canPressSpace)
         {
+            isPressedSpace = true;
             if (Speed > 0) Speed -= 0.25f;
         }
-        else if (Gear == 1)
+        else
         {
-            if (Transmission)
+            isPressedSpace = false;
+            if (Gear == 1)
             {
-                if (Speed < 40) Speed += 0.25f;
-                else if (Speed > 40) Speed -= 0.25f;
+                if (Transmission)
+                {
+                    if (Speed < 40) Speed += 0.25f;
+                    else if (Speed > 40) Speed -= 0.25f;
+                }
+                else
+                {
+                    if (Speed < 10) Speed += 0.25f;
+                    else if (Speed > 10) Speed -= 0.25f;
+                }
             }
-            else
+            else if (Gear == 2)
             {
-                if (Speed < 10) Speed += 0.25f;
-                else if (Speed > 10) Speed -= 0.25f;
+                if (Transmission)
+                {
+                    if (Speed < 50) Speed += 0.25f;
+                    else if (Speed > 50) Speed -= 0.25f;
+                }
+                else
+                {
+                    if (Speed < 20) Speed += 0.25f;
+                    else if (Speed > 20) Speed -= 0.25f;
+                }
             }
-        }
-        else if (Gear == 2)
-        {
-            if (Transmission)
+            else if (Gear == 3)
             {
-                if (Speed < 50) Speed += 0.25f;
-                else if (Speed > 50) Speed -= 0.25f;
-            }
-            else
-            {
-                if (Speed < 20) Speed += 0.25f;
-                else if (Speed > 20) Speed -= 0.25f;
-            }
-        }
-        else if (Gear == 3)
-        {
-            if (Transmission)
-            {
-                if (Speed < 60) Speed += 0.25f;
-                else if (Speed > 60) Speed -= 0.25f;
-            }
-            else
-            {
-                if (Speed < 30) Speed += 0.25f;
-                else if (Speed > 30) Speed -= 0.25f;
+                if (Transmission)
+                {
+                    if (Speed < 60) Speed += 0.25f;
+                    else if (Speed > 60) Speed -= 0.25f;
+                }
+                else
+                {
+                    if (Speed < 30) Speed += 0.25f;
+                    else if (Speed > 30) Speed -= 0.25f;
+                }
             }
         }
 

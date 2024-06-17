@@ -105,32 +105,29 @@ public class Tutorial_Dialogue : MonoBehaviour
             }
         }
 
-        if (transform.position.x >= 960 && transform.position.x < 970)
+        if (transform.position.x >= 925 && transform.position.x < 935)
         {
             if (Child.canPressSpace == false)
             {
                 Child.canPressSpace = true;
             }
 
-            if (Input.GetKey(KeyCode.Space))
+            if (StoryProgress < 4)
             {
-                {
+                TipText.text = "\"스페이스바\" 버튼을 누르자.";
+                StoryProgress = 4;
+                StartCoroutine(TutoTextTyping(StoryProgress));
+            }
+        }
 
-                }
-                if (StoryProgress < 4)
-                {
-                    TipText.text = "\"스페이스바\" 버튼을 누르자.";
-                    StoryProgress = 4;
-                    StartCoroutine(TutoTextTyping(StoryProgress));
-                }
+        if (transform.position.x >= 950 && transform.position.x < 960)
+        {
+            if (Child.isPressedSpace == false)
+            {
                 Vector3 dir = transform.position;
                 dir.x -= 10;
                 dir.y -= 0.01f;
                 transform.position = dir;
-            }
-            else
-            {
-                TipText.text = "";
             }
         }
     }
