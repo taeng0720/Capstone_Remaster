@@ -4,7 +4,7 @@ using UnityEngine;
 public class Tutorial_ruddnsrl : MonoBehaviour
 {
     public int Gear = 0;
-    private float Speed = 0;
+    public float Speed = 0;
     public bool Transmission = false;
 
     public bool canPressGear1 = false;
@@ -13,6 +13,7 @@ public class Tutorial_ruddnsrl : MonoBehaviour
     public bool canPressR = false;
     public bool canPressSpace = false;
     public bool isPressedSpace = false;
+    public bool canStop = false;
 
     [SerializeField] private GameObject Tire;
     [SerializeField] private GameObject TutoText;
@@ -56,9 +57,14 @@ public class Tutorial_ruddnsrl : MonoBehaviour
         if (Input.GetKey(KeyCode.Space) && canPressSpace)
         {
             isPressedSpace = true;
-            if (Speed > 0) Speed -= 0.25f;
+            if (canStop) if (Speed > 0) Speed -= 0.25f;
         }
-        else
+        else if (Input.GetKeyUp(KeyCode.Space) && canPressSpace)
+        {
+            isPressedSpace = false;
+        }
+
+        if (!canStop && Speed < 60)
         {
             isPressedSpace = false;
             if (Gear == 1)

@@ -94,7 +94,7 @@ public class Story_Dialogue : MonoBehaviour
     }
 
     private void StartTutoDialogue()
-    {
+    {   
         ruddnsrl.GetComponent<Tutorial_Dialogue>().StartTextTyping();
     }
 

@@ -1,6 +1,7 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Tutorial_Dialogue : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class Tutorial_Dialogue : MonoBehaviour
     [SerializeField] private TMP_Text TipText;
     private int StoryProgress = 0;
     private Tutorial_ruddnsrl Child;
+    [SerializeField] private Image FadeOut;
 
     private void Start()
     {
@@ -120,16 +122,30 @@ public class Tutorial_Dialogue : MonoBehaviour
             }
         }
 
-        if (transform.position.x >= 950 && transform.position.x < 960)
+        if (transform.position.x >= 1150 && transform.position.x < 1325 && Child.Speed > 0)
         {
             if (Child.isPressedSpace == false)
             {
-                Vector3 dir = transform.position;
-                dir.x -= 10;
-                dir.y -= 0.01f;
-                transform.position = dir;
+                FadeOut.CrossFadeAlpha(2f, 1f, true);
+                Invoke("SpaceReset", 2f);
+            }
+            else
+            {
+                Child.canStop = true;
             }
         }
+    }
+
+    private void SpaceReset()
+    {
+        Child.canStop = false;
+        Child.Speed = 60;
+        transform.rotation = Quaternion.Euler(0, 90, 0);
+        Vector3 dir = transform.position;
+        dir.x = 925;
+        dir.y = 0;
+        transform.position = dir;
+        FadeOut.CrossFadeAlpha(-1f, 1f, true);
     }
 
     public void StartTextTyping()
