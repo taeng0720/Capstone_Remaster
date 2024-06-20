@@ -14,6 +14,7 @@ public class Tutorial_Dialogue : MonoBehaviour
     private int StoryProgress = 0;
     private Tutorial_ruddnsrl Child;
     [SerializeField] private Image FadeOut;
+    [SerializeField] private GameObject Tree;
 
     private void Start()
     {
@@ -104,6 +105,7 @@ public class Tutorial_Dialogue : MonoBehaviour
             else
             {
                 TipText.text = "";
+                Tree.SetActive(true);
             }
         }
 
