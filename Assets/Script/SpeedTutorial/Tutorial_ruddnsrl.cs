@@ -22,7 +22,7 @@ public class Tutorial_ruddnsrl : MonoBehaviour
     [SerializeField] private TMP_Text GearText;
     [SerializeField] private TMP_Text TransmissionText;
 
-    private void Update()
+    private void FixedUpdate()
     {
         GearControl();
         SpeedControl();
