@@ -5,7 +5,7 @@ public class Racing : MonoBehaviour
 {
     public int Gear = 0;
     public float Speed = 0;
-    public bool Transmission = false;
+    public bool Transmission = true;
     public bool isPressedSpace = false;
     public bool canStop = false;
 
