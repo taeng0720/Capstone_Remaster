@@ -1297,13 +1297,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1842341595}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.4593735, y: -0.000000059604645, z: 0.00000014901161, w: 0.88824326}
-  m_LocalPosition: {x: 0, y: 103.5, z: -73.30006}
+  m_LocalRotation: {x: 0.32482624, y: 0.62808275, z: -0.324826, w: 0.6280829}
+  m_LocalPosition: {x: -1420.3, y: 114.6, z: 174}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1574910770}
-  m_Father: {fileID: 5905920686031334122}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &1842341598
 Camera:
@@ -6556,7 +6556,6 @@ Transform:
   - {fileID: 5025975648014648661}
   - {fileID: 2505063464406017716}
   - {fileID: 1853319947}
-  - {fileID: 1842341597}
   m_Father: {fileID: 7331064558949412649}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5905920686031334123
@@ -6568,18 +6567,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 5616943016182063249}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f3af7b8524af4f9694a1fe4b599f230, type: 3}
+  m_Script: {fileID: 11500000, guid: 14f60678054493d44ad0a3edc7796b36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Gear: 0
-  Speed: 0
-  Transmission: 0
-  isPressedSpace: 0
-  canStop: 0
   Tire: {fileID: 1305911330154729710}
-  SpeedText: {fileID: 1640752984}
-  GearText: {fileID: 802233512}
-  TransmissionText: {fileID: 1979188959}
 --- !u!33 &5931766004482120439
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -8850,6 +8842,7 @@ SceneRoots:
   m_Roots:
   - {fileID: 1169590926}
   - {fileID: 94735168}
+  - {fileID: 1842341597}
   - {fileID: 7331064558949412649}
   - {fileID: 1333182694}
   - {fileID: 374398233}
