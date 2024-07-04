@@ -12,7 +12,7 @@ public class Cultivator : MonoBehaviour
 
     [SerializeField] private GameObject Tire;
 
-    private void Update()
+    private void FixedUpdate()
     {
         GearControl();
         SpeedControl();
